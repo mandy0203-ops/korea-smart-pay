@@ -141,37 +141,183 @@
 
 ---
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&display=swap');
+    
+    body {
+        font-family: "Gaegu", "Chalkboard SE", "Comic Sans MS", sans-serif;
+        color: #555;
+        background-color: #fffdf9;
+        padding: 20px;
+        line-height: 1.6;
+    }
+    h1, h2, h3 {
+        color: #ff8b94;
+        font-weight: 700;
+        font-family: "Gaegu", cursive;
+    }
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        border-bottom: 3px dashed #ffaaa5;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+    }
+    h2 {
+        font-size: 28px;
+        margin-top: 40px;
+        border-left: 5px solid #ffd3b6;
+        padding-left: 15px;
+    }
+    h3 {
+        font-size: 22px;
+        color: #a8e6cf;
+        background: #fff;
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        border: 2px solid #a8e6cf;
+        margin-top: 20px;
+    }
+    p, li {
+        font-size: 16px;
+    }
+    strong {
+        color: #ff6f69;
+        background: linear-gradient(120deg, #fff2cc 0%, #fff2cc 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 40%;
+        background-position: 0 88%;
+    }
+    
+    /* Links */
+    a {
+        color: #ff8b94;
+        text-decoration: none;
+        border-bottom: 1px dotted #ff8b94;
+        transition: all 0.3s;
+    }
+    a:hover {
+        background-color: #ffe5e5;
+        color: #ff5e6c;
+    }
+
+    /* Custom Containers */
+    .note-box {
+        background: #fff;
+        border: 2px dashed #dcedc1;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 5px 5px 0px #f0f0f0;
+    }
+
+    /* Thumbnail Grid */
+    .thumb-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 15px;
+    }
+    .thumb-card {
+        background: #fff;
+        border: 2px solid #ffd3b6;
+        border-radius: 12px;
+        padding: 10px;
+        width: 45%;
+        display: flex;
+        align-items: center;
+        box-shadow: 3px 3px 0px #ffe5d9;
+    }
+    .thumb-img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 15px;
+        border: 2px solid #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .thumb-info {
+        flex: 1;
+    }
+    .thumb-title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: block;
+        color: #ff8b94;
+    }
+    
+    /* List Style */
+    .cute-list {
+        list-style: none;
+        padding: 0;
+    }
+    .cute-list li {
+        margin-bottom: 12px;
+        padding-left: 25px;
+        position: relative;
+    }
+    .cute-list li::before {
+        content: '🌸';
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-size: 14px;
+    }
+</style>
+
 ## 🔗 參考來源 (Source Links)
 
 本攻略整理自以下網友熱心分享，點擊連結可查看原文討論：
 
-### 📺 影片
+### 📺 精彩影片
+<div class="note-box">
+    <a href="https://youtu.be/hSPZVv1-J5M?si=3SBiNWAjiQPPYzoj" style="display: flex; align-items: center; border: none;">
+        <img src="images/youtube_thumb.jpg" style="width: 120px; border-radius: 10px; margin-right: 15px; border: 2px solid #eee;">
+        <span style="font-size: 18px; font-weight: bold;">HOOK ft. 全支付 - 韓國便利商店好吃到讓人哇哩咧</span>
+    </a>
+</div>
 
-[![HOOK ft. 全支付 - 韓國便利商店好吃到讓人哇哩咧](images/youtube_thumb.jpg)](https://youtu.be/hSPZVv1-J5M?si=3SBiNWAjiQPPYzoj)
-<br>
-[HOOK ft. 全支付 - 韓國便利商店好吃到讓人哇哩咧](https://youtu.be/hSPZVv1-J5M?si=3SBiNWAjiQPPYzoj)
+### 🧵 精選討論 (附圖預覽)
+<div class="thumb-grid">
+    <div class="thumb-card">
+        <img src="images/thumb_1.jpg" class="thumb-img">
+        <div class="thumb-info">
+            <a href="https://www.threads.com/@tan_ni_jung/post/DQYGBK3j5q3" class="thumb-title">💳 韓國刷卡回饋攻略</a>
+            <span style="font-size: 12px; color: #888;">by @tan_ni_jung</span>
+        </div>
+    </div>
+    <div class="thumb-card">
+        <img src="images/thumb_2.jpg" class="thumb-img">
+        <div class="thumb-info">
+            <a href="https://www.threads.com/@yunfei_224/post/DRPSxDeEoti" class="thumb-title">👜 買 Chanel 刷 LINE Pay</a>
+            <span style="font-size: 12px; color: #888;">by @yunfei_224</span>
+        </div>
+    </div>
+</div>
 
-### 🧵 Threads 討論串
-
-| 預覽 (Preview) | 標題 (Title) |
-| :---: | :--- |
-| <img src="images/thumb_1.jpg" width="150"> | [@tan_ni_jung - 韓國刷卡回饋攻略](https://www.threads.com/@tan_ni_jung/post/DQYGBK3j5q3) |
-| <img src="images/thumb_2.jpg" width="150"> | [@yunfei_224 - 買 Chanel 刷 LINE Pay](https://www.threads.com/@yunfei_224/post/DRPSxDeEoti) |
-| <img src="images/threads_icon.png" width="50"> | [@windko.tw - 韓國 LINE Pay 活動詳解](https://www.threads.com/@windko.tw/post/DPP1-7jEl_x) |
-| <img src="images/threads_icon.png" width="50"> | [@johnlin50 - 2025 韓國消費建議](https://www.threads.com/@johnlin50/post/DPRlj7uD09u) |
-| <img src="images/threads_icon.png" width="50"> | [@kkrseoul24 - 樂天百貨 LINE Pay 額度滿了](https://www.threads.com/@kkrseoul24/post/DRXMZSDgSpa) |
-| <img src="images/threads_icon.png" width="50"> | [@albee5433 - 老奶奶背心實測](https://www.threads.com/@albee5433/post/DRlr3rSkyz6) |
-| <img src="images/threads_icon.png" width="50"> | [@roolez553 - 韓國旅遊分享](https://www.threads.com/@roolez553/post/DRUyL8ICQpm) |
-| <img src="images/threads_icon.png" width="50"> | [@kipi89876 - 旅遊心得](https://www.threads.com/@kipi89876/post/DFJktB2z8Lj) |
-| <img src="images/threads_icon.png" width="50"> | [@sandyy_booku - 旅遊筆記](https://www.threads.com/@sandyy_booku/post/DQY-AEQjzuW) |
-| <img src="images/threads_icon.png" width="50"> | [@queenmwin - 旅遊分享](https://www.threads.com/@queenmwin/post/DRW1QPqiaV_) |
-| <img src="images/threads_icon.png" width="50"> | [@nanisince2012 - 旅遊心得](https://www.threads.com/@nanisince2012/post/DRZOc8ikrIX) |
-| <img src="images/threads_icon.png" width="50"> | [@nellydyu - 弘大正直的金先生](https://www.threads.com/@nellydyu/post/DRcXT96EqLx) |
-| <img src="images/threads_icon.png" width="50"> | [@takaselect - 行動電源與美妝](https://www.threads.com/@takaselect/post/DRe3JVviaQ5) |
-| <img src="images/threads_icon.png" width="50"> | [@_pppci._ - 行程規劃心得](https://www.threads.com/@_pppci._/post/DRe0EAlk1v6) |
-| <img src="images/threads_icon.png" width="50"> | [@sunnythinthin - 明洞夜市建議](https://www.threads.com/@sunnythinthin/post/DReno59EhS1) |
-| <img src="images/threads_icon.png" width="50"> | [@two_tai_tai - 旅遊分享](https://www.threads.com/@two_tai_tai/post/DRe8OTAE3SW) |
-| <img src="images/threads_icon.png" width="50"> | [@ig_rich99chu - 旅遊心得](https://www.threads.com/@ig_rich99chu/post/DRebnxjkkkd) |
-| <img src="images/threads_icon.png" width="50"> | [@anna_zhu0610 - 旅遊分享](https://www.threads.com/@anna_zhu0610/post/DRle-EgAVpF) |
-| <img src="images/threads_icon.png" width="50"> | [@beurlife.tw - 聖水洞 Beton 麵包](https://www.threads.com/@beurlife.tw/post/DRn1qDOj86r) |
-| <img src="images/threads_icon.png" width="50"> | [@hanni1415_ - 樂天樂園攻略](https://www.threads.com/@hanni1415_/post/DRqNgrFEq6m) |
+### 💡 更多實用筆記
+<div class="note-box">
+    <ul class="cute-list">
+        <li><a href="https://www.threads.com/@windko.tw/post/DPP1-7jEl_x">💰 [省錢攻略] 韓國 LINE Pay 活動詳解與回饋教學 (@windko.tw)</a></li>
+        <li><a href="https://www.threads.com/@johnlin50/post/DPRlj7uD09u">🛍️ [消費趨勢] 2025 韓國最新消費建議 (@johnlin50)</a></li>
+        <li><a href="https://www.threads.com/@kkrseoul24/post/DRXMZSDgSpa">⚠️ [避雷提醒] 樂天百貨 LINE Pay 額度限制注意 (@kkrseoul24)</a></li>
+        <li><a href="https://www.threads.com/@albee5433/post/DRlr3rSkyz6">🧥 [穿搭實測] 廣藏市場老奶奶背心保暖度測試 (@albee5433)</a></li>
+        <li><a href="https://www.threads.com/@roolez553/post/DRUyL8ICQpm">✈️ [旅遊心得] 韓國旅遊綜合分享 (@roolez553)</a></li>
+        <li><a href="https://www.threads.com/@kipi89876/post/DFJktB2z8Lj">📝 [旅遊筆記] 韓國旅遊實用加分小技巧 (@kipi89876)</a></li>
+        <li><a href="https://www.threads.com/@sandyy_booku/post/DQY-AEQjzuW">📒 [詳細筆記] 韓國旅遊行程與注意事項 (@sandyy_booku)</a></li>
+        <li><a href="https://www.threads.com/@queenmwin/post/DRW1QPqiaV_">✨ [好物分享] 韓國旅遊必買與推薦 (@queenmwin)</a></li>
+        <li><a href="https://www.threads.com/@nanisince2012/post/DRZOc8ikrIX">🚌 [交通心得] 韓國旅遊交通與行程安排 (@nanisince2012)</a></li>
+        <li><a href="https://www.threads.com/@nellydyu/post/DRcXT96EqLx">🍙 [美食推薦] 弘大正直的金先生 (紫菜包飯) (@nellydyu)</a></li>
+        <li><a href="https://www.threads.com/@takaselect/post/DRe3JVviaQ5">💄 [購物清單] 行動電源規定與美妝推薦 (@takaselect)</a></li>
+        <li><a href="https://www.threads.com/@_pppci._/post/DRe0EAlk1v6">🗺️ [行程規劃] 韓國自由行路線安排心得 (@_pppci._)</a></li>
+        <li><a href="https://www.threads.com/@sunnythinthin/post/DReno59EhS1">🍢 [夜市攻略] 明洞夜市小吃建議與避雷 (@sunnythinthin)</a></li>
+        <li><a href="https://www.threads.com/@two_tai_tai/post/DRe8OTAE3SW">👫 [雙人遊] 韓國旅遊雙人行程分享 (@two_tai_tai)</a></li>
+        <li><a href="https://www.threads.com/@ig_rich99chu/post/DRebnxjkkkd">💡 [實用建議] 韓國旅遊避雷與省錢技巧 (@ig_rich99chu)</a></li>
+        <li><a href="https://www.threads.com/@anna_zhu0610/post/DRle-EgAVpF">📸 [打卡熱點] 韓國旅遊拍照與景點分享 (@anna_zhu0610)</a></li>
+        <li><a href="https://www.threads.com/@beurlife.tw/post/DRn1qDOj86r">🍞 [聖水洞美食] Beton 麵包店排隊攻略 (@beurlife.tw)</a></li>
+        <li><a href="https://www.threads.com/@hanni1415_/post/DRqNgrFEq6m">🎢 [樂園攻略] 樂天世界遊玩路線與設施推薦 (@hanni1415_)</a></li>
+    </ul>
+</div>
