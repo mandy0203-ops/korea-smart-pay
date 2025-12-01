@@ -512,7 +512,7 @@
             // Fix 1: 使用 useCallback 優化效能，並確保依賴正確
             const calculateCost = useCallback((krw, method) => {
                 // 統一使用手動設定的匯率
-                const baseTWD = krw * rate;
+                const baseTWD = krw * manualRate;
                 const fee = baseTWD * (method.handlingFee / 100);
                 const reward = baseTWD * (method.rewardRate / 100);
                 const finalCost = Math.round(baseTWD + fee - reward);
