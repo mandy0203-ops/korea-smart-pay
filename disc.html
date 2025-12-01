@@ -20,7 +20,7 @@
             --text-muted: #666666;
             --border-color: #e2e8f0;
 
-            /* DISC Specific Colors for Results */
+            /* DISC Specific Colors */
             --color-d: #FF6B6B;
             --color-i: #FFD93D;
             --color-s: #6BCB77;
@@ -46,7 +46,7 @@
 
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             padding: 2rem;
             position: relative;
         }
@@ -61,18 +61,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
             }
         }
 
@@ -177,71 +165,120 @@
 
         .question-card {
             background: white;
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-color);
             position: relative;
-            min-height: 400px;
+            min-height: 450px;
             display: flex;
             flex-direction: column;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
         }
 
         .question-count {
             color: var(--primary-color);
             font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
+            font-size: 1.1rem;
             letter-spacing: 1px;
         }
 
-        .question-text {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            line-height: 1.5;
+        .instruction-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: #f0f9ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid #bae6fd;
         }
 
-        .options-grid {
+        /* Matrix Layout for Options */
+        .matrix-container {
             display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 1rem;
-            flex: 1;
+            margin-bottom: 2rem;
+            align-items: center;
         }
 
-        .option-btn {
-            background: white;
-            border: 2px solid #e2e8f0;
-            padding: 1.2rem;
-            border-radius: 12px;
-            color: var(--text-color);
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.2s ease;
-            font-size: 1rem;
+        .matrix-header {
+            font-weight: 700;
+            color: var(--text-muted);
+            text-align: center;
+            font-size: 0.9rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .matrix-row {
+            display: contents;
+        }
+
+        .word-cell {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        /* Custom Radio Buttons */
+        .custom-radio {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            cursor: pointer;
             position: relative;
-            overflow: hidden;
+            transition: all 0.2s;
         }
 
-        .option-btn:hover {
+        .custom-radio:checked {
             border-color: var(--primary-color);
-            background-color: #f0fdf4;
-            transform: translateX(5px);
-        }
-
-        .option-btn.selected {
             background-color: var(--primary-color);
+        }
+
+        .custom-radio:checked::after {
+            content: '✓';
             color: white;
-            border-color: var(--primary-color);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+        }
+
+        /* Error state */
+        .custom-radio.error {
+            border-color: #ef4444;
         }
 
         .nav-buttons {
             display: flex;
             justify-content: space-between;
-            margin-top: 2rem;
+            margin-top: auto;
             gap: 1rem;
         }
 
@@ -314,9 +351,9 @@
 
         .chart-container {
             margin: 2rem auto;
-            height: 200px;
+            height: 250px;
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             display: flex;
             align-items: flex-end;
             justify-content: space-around;
@@ -340,6 +377,9 @@
             transition: height 1s ease-out;
             min-height: 2px;
             position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
         }
 
         .bar-label {
@@ -352,6 +392,9 @@
             margin-bottom: 5px;
             font-weight: 600;
             font-size: 0.9rem;
+            color: white;
+            padding-bottom: 5px;
+            z-index: 1;
         }
 
         .result-desc {
@@ -436,16 +479,14 @@
                 font-size: 2rem;
             }
 
-            .question-text {
-                font-size: 1.2rem;
+            .matrix-container {
+                grid-template-columns: 1fr auto auto;
+                gap: 0.5rem;
             }
 
-            .traits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .question-card {
-                padding: 1.5rem;
+            .word-cell {
+                font-size: 1rem;
+                padding: 0.8rem;
             }
 
             .nav-buttons {
@@ -475,8 +516,9 @@
             <h1>DISC 人格特質測驗</h1>
             <p class="subtitle">
                 打造 36 度關係<br>
-                請憑直覺選出最符合您當下狀態的描述。<br>
-                共 28 題，預計時間：3-5 分鐘
+                請在每一題的四個形容詞中，<br>
+                選出一個 <strong>「最像」</strong> 您，以及一個 <strong>「最不像」</strong> 您的描述。<br>
+                共 28 題，預計時間：5-8 分鐘
             </p>
             <div>
                 <button class="btn" onclick="startQuiz()">開始測驗</button>
@@ -497,9 +539,19 @@
             </div>
 
             <div class="question-card" id="question-card">
-                <div class="question-count" id="question-count-display">QUESTION 1</div>
-                <div class="question-text" id="question-text"></div>
-                <div class="options-grid" id="options-grid"></div>
+                <div class="question-header">
+                    <div class="question-count" id="question-count-display">QUESTION 1</div>
+                    <div class="instruction-text">請選擇 1 個最像 + 1 個最不像</div>
+                </div>
+
+                <div class="matrix-container" id="matrix-container">
+                    <!-- Header Row -->
+                    <div class="matrix-header">形容詞</div>
+                    <div class="matrix-header" style="color: var(--primary-color)">最像</div>
+                    <div class="matrix-header" style="color: #ef4444">最不像</div>
+
+                    <!-- Options will be injected here -->
+                </div>
 
                 <div class="nav-buttons">
                     <button id="prev-btn" class="nav-btn" onclick="prevQuestion()">← 上一題</button>
@@ -519,24 +571,28 @@
 
                 <div class="chart-container">
                     <div class="bar-group">
-                        <span class="bar-value" id="val-D">0</span>
-                        <div class="bar bg-D" id="bar-D" style="height: 0%"></div>
-                        <span class="bar-label">D</span>
+                        <div class="bar bg-D" id="bar-D" style="height: 0%">
+                            <span class="bar-value" id="val-D">0</span>
+                        </div>
+                        <span class="bar-label">D (★)</span>
                     </div>
                     <div class="bar-group">
-                        <span class="bar-value" id="val-I">0</span>
-                        <div class="bar bg-I" id="bar-I" style="height: 0%"></div>
-                        <span class="bar-label">I</span>
+                        <div class="bar bg-I" id="bar-I" style="height: 0%">
+                            <span class="bar-value" id="val-I">0</span>
+                        </div>
+                        <span class="bar-label">I (▲)</span>
                     </div>
                     <div class="bar-group">
-                        <span class="bar-value" id="val-S">0</span>
-                        <div class="bar bg-S" id="bar-S" style="height: 0%"></div>
-                        <span class="bar-label">S</span>
+                        <div class="bar bg-S" id="bar-S" style="height: 0%">
+                            <span class="bar-value" id="val-S">0</span>
+                        </div>
+                        <span class="bar-label">S (●)</span>
                     </div>
                     <div class="bar-group">
-                        <span class="bar-value" id="val-C">0</span>
-                        <div class="bar bg-C" id="bar-C" style="height: 0%"></div>
-                        <span class="bar-label">C</span>
+                        <div class="bar bg-C" id="bar-C" style="height: 0%">
+                            <span class="bar-value" id="val-C">0</span>
+                        </div>
+                        <span class="bar-label">C (■)</span>
                     </div>
                 </div>
 
@@ -562,36 +618,38 @@
     </div>
 
     <script>
-        // 28 Questions from Handout
+        // 28 Questions with Shapes Mapping (Placeholder Mapping based on standard DISC)
+        // D=Star(★), I=Triangle(▲), S=Circle(●), C=Square(■)
+        // Note: This mapping is a placeholder. The user should verify the exact shape-to-trait mapping.
         const questions = [
-            { text: "請選擇最符合您的描述", options: [{ t: "D", v: "富於冒險" }, { t: "I", v: "生氣勃勃" }, { t: "S", v: "穩健" }, { t: "C", v: "隨和" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "I", v: "善於說服" }, { t: "D", v: "強調結果" }, { t: "C", v: "精確" }, { t: "S", v: "平靜" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "S", v: "順從" }, { t: "I", v: "令人鼓舞" }, { t: "C", v: "完美主義" }, { t: "D", v: "意志堅強" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "靦腆" }, { t: "I", v: "令人信服" }, { t: "D", v: "堅持不懈" }, { t: "S", v: "溫和" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "D", v: "令人振奮" }, { t: "S", v: "善於尊重" }, { t: "C", v: "善於思考" }, { t: "I", v: "善於表達" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "I", v: "精神飽滿" }, { t: "S", v: "滿足" }, { t: "C", v: "敏感" }, { t: "D", v: "自立" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "計劃者" }, { t: "S", v: "耐心" }, { t: "I", v: "積極" }, { t: "D", v: "推動者" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "D", v: "肯定" }, { t: "I", v: "無拘無束" }, { t: "C", v: "按部就班" }, { t: "S", v: "羞澀" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "井井有條" }, { t: "S", v: "遷就" }, { t: "D", v: "直言不諱" }, { t: "I", v: "樂觀" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "S", v: "友善" }, { t: "C", v: "忠誠" }, { t: "I", v: "有趣" }, { t: "D", v: "強勢" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "D", v: "勇敢" }, { t: "I", v: "可愛" }, { t: "S", v: "外交手腕" }, { t: "C", v: "注重細節" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "I", v: "令人高興" }, { t: "C", v: "文化修養" }, { t: "D", v: "自信" }, { t: "S", v: "貫徹始終" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "理想主義" }, { t: "D", v: "獨立" }, { t: "S", v: "無攻擊性" }, { t: "I", v: "激勵他人" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "I", v: "感情外露" }, { t: "C", v: "深沉" }, { t: "D", v: "果斷" }, { t: "S", v: "幽默" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "S", v: "調解者" }, { t: "C", v: "音樂愛好者" }, { t: "I", v: "發起人" }, { t: "D", v: "固執" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "考慮周到" }, { t: "D", v: "執著" }, { t: "I", v: "多言" }, { t: "S", v: "容忍" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "S", v: "聆聽者" }, { t: "C", v: "忠心" }, { t: "D", v: "領導者" }, { t: "I", v: "生氣勃勃" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "S", v: "知足" }, { t: "D", v: "首領" }, { t: "C", v: "製圖者" }, { t: "I", v: "惹人喜愛" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "完美主義者" }, { t: "S", v: "和氣" }, { t: "D", v: "多產" }, { t: "I", v: "受歡迎" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "I", v: "跳躍" }, { t: "D", v: "無畏" }, { t: "C", v: "規範" }, { t: "S", v: "平衡" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "S", v: "乏味" }, { t: "D", v: "專橫" }, { t: "C", v: "含蓄" }, { t: "I", v: "情感豐富" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "I", v: "衝動" }, { t: "S", v: "慢條斯理" }, { t: "C", v: "離群" }, { t: "D", v: "發號施令" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "S", v: "合群" }, { t: "I", v: "受歡迎" }, { t: "D", v: "精力充沛" }, { t: "C", v: "操縱" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "S", v: "隨和" }, { t: "C", v: "傳統" }, { t: "I", v: "刺激" }, { t: "D", v: "挑剔" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "恐懼" }, { t: "I", v: "改變" }, { t: "D", v: "篤定" }, { t: "S", v: "有說服力" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "嚴格" }, { t: "I", v: "表情豐富" }, { t: "S", v: "不變" }, { t: "D", v: "開拓" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "慎重" }, { t: "I", v: "神氣" }, { t: "S", v: "遵循" }, { t: "D", v: "熱切" }] },
-            { text: "請選擇最符合您的描述", options: [{ t: "C", v: "恭敬" }, { t: "D", v: "先驅" }, { t: "I", v: "樂觀" }, { t: "S", v: "助人" }] }
+            { id: 1, options: [{ t: "D", v: "富於冒險", s: "★" }, { t: "I", v: "生氣勃勃", s: "▲" }, { t: "S", v: "穩健", s: "●" }, { t: "C", v: "隨和", s: "■" }] },
+            { id: 2, options: [{ t: "I", v: "善於說服", s: "▲" }, { t: "D", v: "強調結果", s: "★" }, { t: "C", v: "精確", s: "■" }, { t: "S", v: "平靜", s: "●" }] },
+            { id: 3, options: [{ t: "S", v: "順從", s: "●" }, { t: "I", v: "令人鼓舞", s: "▲" }, { t: "C", v: "完美主義", s: "■" }, { t: "D", v: "意志堅強", s: "★" }] },
+            { id: 4, options: [{ t: "C", v: "靦腆", s: "■" }, { t: "I", v: "令人信服", s: "▲" }, { t: "D", v: "堅持不懈", s: "★" }, { t: "S", v: "溫和", s: "●" }] },
+            { id: 5, options: [{ t: "D", v: "令人振奮", s: "★" }, { t: "S", v: "善於尊重", s: "●" }, { t: "C", v: "善於思考", s: "■" }, { t: "I", v: "善於表達", s: "▲" }] },
+            { id: 6, options: [{ t: "I", v: "精神飽滿", s: "▲" }, { t: "S", v: "滿足", s: "●" }, { t: "C", v: "敏感", s: "■" }, { t: "D", v: "自立", s: "★" }] },
+            { id: 7, options: [{ t: "C", v: "計劃者", s: "■" }, { t: "S", v: "耐心", s: "●" }, { t: "I", v: "積極", s: "▲" }, { t: "D", v: "推動者", s: "★" }] },
+            { id: 8, options: [{ t: "D", v: "肯定", s: "★" }, { t: "I", v: "無拘無束", s: "▲" }, { t: "C", v: "按部就班", s: "■" }, { t: "S", v: "羞澀", s: "●" }] },
+            { id: 9, options: [{ t: "C", v: "井井有條", s: "■" }, { t: "S", v: "遷就", s: "●" }, { t: "D", v: "直言不諱", s: "★" }, { t: "I", v: "樂觀", s: "▲" }] },
+            { id: 10, options: [{ t: "S", v: "友善", s: "●" }, { t: "C", v: "忠誠", s: "■" }, { t: "I", v: "有趣", s: "▲" }, { t: "D", v: "強勢", s: "★" }] },
+            { id: 11, options: [{ t: "D", v: "勇敢", s: "★" }, { t: "I", v: "可愛", s: "▲" }, { t: "S", v: "外交手腕", s: "●" }, { t: "C", v: "注重細節", s: "■" }] },
+            { id: 12, options: [{ t: "I", v: "令人高興", s: "▲" }, { t: "C", v: "文化修養", s: "■" }, { t: "D", v: "自信", s: "★" }, { t: "S", v: "貫徹始終", s: "●" }] },
+            { id: 13, options: [{ t: "C", v: "理想主義", s: "■" }, { t: "D", v: "獨立", s: "★" }, { t: "S", v: "無攻擊性", s: "●" }, { t: "I", v: "激勵他人", s: "▲" }] },
+            { id: 14, options: [{ t: "I", v: "感情外露", s: "▲" }, { t: "C", v: "深沉", s: "■" }, { t: "D", v: "果斷", s: "★" }, { t: "S", v: "幽默", s: "●" }] },
+            { id: 15, options: [{ t: "S", v: "調解者", s: "●" }, { t: "C", v: "音樂愛好者", s: "■" }, { t: "I", v: "發起人", s: "▲" }, { t: "D", v: "固執", s: "★" }] },
+            { id: 16, options: [{ t: "C", v: "考慮周到", s: "■" }, { t: "D", v: "執著", s: "★" }, { t: "I", v: "多言", s: "▲" }, { t: "S", v: "容忍", s: "●" }] },
+            { id: 17, options: [{ t: "S", v: "聆聽者", s: "●" }, { t: "C", v: "忠心", s: "■" }, { t: "D", v: "領導者", s: "★" }, { t: "I", v: "生氣勃勃", s: "▲" }] },
+            { id: 18, options: [{ t: "S", v: "知足", s: "●" }, { t: "D", v: "首領", s: "★" }, { t: "C", v: "製圖者", s: "■" }, { t: "I", v: "惹人喜愛", s: "▲" }] },
+            { id: 19, options: [{ t: "C", v: "完美主義者", s: "■" }, { t: "S", v: "和氣", s: "●" }, { t: "D", v: "多產", s: "★" }, { t: "I", v: "受歡迎", s: "▲" }] },
+            { id: 20, options: [{ t: "I", v: "跳躍", s: "▲" }, { t: "D", v: "無畏", s: "★" }, { t: "C", v: "規範", s: "■" }, { t: "S", v: "平衡", s: "●" }] },
+            { id: 21, options: [{ t: "S", v: "乏味", s: "●" }, { t: "D", v: "專橫", s: "★" }, { t: "C", v: "含蓄", s: "■" }, { t: "I", v: "情感豐富", s: "▲" }] },
+            { id: 22, options: [{ t: "I", v: "衝動", s: "▲" }, { t: "S", v: "慢條斯理", s: "●" }, { t: "C", v: "離群", s: "■" }, { t: "D", v: "發號施令", s: "★" }] },
+            { id: 23, options: [{ t: "S", v: "合群", s: "●" }, { t: "I", v: "受歡迎", s: "▲" }, { t: "D", v: "精力充沛", s: "★" }, { t: "C", v: "操縱", s: "■" }] },
+            { id: 24, options: [{ t: "S", v: "隨和", s: "●" }, { t: "C", v: "傳統", s: "■" }, { t: "I", v: "刺激", s: "▲" }, { t: "D", v: "挑剔", s: "★" }] },
+            { id: 25, options: [{ t: "C", v: "恐懼", s: "■" }, { t: "I", v: "改變", s: "▲" }, { t: "D", v: "篤定", s: "★" }, { t: "S", v: "有說服力", s: "●" }] },
+            { id: 26, options: [{ t: "C", v: "嚴格", s: "■" }, { t: "I", v: "表情豐富", s: "▲" }, { t: "S", v: "不變", s: "●" }, { t: "D", v: "開拓", s: "★" }] },
+            { id: 27, options: [{ t: "C", v: "慎重", s: "■" }, { t: "I", v: "神氣", s: "▲" }, { t: "S", v: "遵循", s: "●" }, { t: "D", v: "熱切", s: "★" }] },
+            { id: 28, options: [{ t: "C", v: "恭敬", s: "■" }, { t: "D", v: "先驅", s: "★" }, { t: "I", v: "樂觀", s: "▲" }, { t: "S", v: "助人", s: "●" }] }
         ];
 
         const results = {
@@ -622,81 +680,95 @@
         };
 
         let currentQuestion = 0;
+        // userAnswers[i] = { most: 'D', least: 'C' }
         let userAnswers = new Array(questions.length).fill(null);
-        let shuffledQuestions = [];
-
-        function initQuiz() {
-            shuffledQuestions = questions.map(q => {
-                const shuffledOptions = [...q.options];
-                for (let i = shuffledOptions.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
-                }
-                return { ...q, options: shuffledOptions };
-            });
-        }
 
         function startQuiz() {
-            initQuiz();
             document.getElementById('landing-page').style.display = 'none';
             document.getElementById('quiz-container').style.display = 'block';
             showQuestion();
         }
 
         function showQuestion() {
-            const q = shuffledQuestions[currentQuestion];
-            const textEl = document.getElementById('question-text');
-            const gridEl = document.getElementById('options-grid');
+            const q = questions[currentQuestion];
+            const container = document.getElementById('matrix-container');
             const progressEl = document.getElementById('progress');
             const countEl = document.getElementById('question-count-display');
             const progressTextEl = document.getElementById('progress-text');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
 
+            // Update UI Info
             countEl.innerText = `QUESTION ${currentQuestion + 1}`;
             progressTextEl.innerText = `${currentQuestion + 1} / ${questions.length}`;
 
+            // Update progress bar
             const progress = ((currentQuestion) / questions.length) * 100;
             progressEl.style.width = `${progress}%`;
 
+            // Navigation State
             prevBtn.disabled = currentQuestion === 0;
-            nextBtn.disabled = userAnswers[currentQuestion] === null;
 
-            textEl.style.opacity = 0;
-            gridEl.innerHTML = '';
+            // Check if current question is fully answered
+            const currentAns = userAnswers[currentQuestion];
+            const isAnswered = currentAns && currentAns.most && currentAns.least;
+            nextBtn.disabled = !isAnswered;
 
-            setTimeout(() => {
-                textEl.innerText = q.text;
-                textEl.style.transition = 'opacity 0.5s';
-                textEl.style.opacity = 1;
+            // Clear previous options (keep headers)
+            // Remove all elements after the first 3 (headers)
+            while (container.children.length > 3) {
+                container.removeChild(container.lastChild);
+            }
 
-                q.options.forEach((opt, index) => {
-                    const btn = document.createElement('button');
-                    btn.className = 'option-btn';
-                    if (userAnswers[currentQuestion] === opt.t) {
-                        btn.classList.add('selected');
-                    }
-                    btn.innerHTML = opt.v;
-                    btn.style.animation = `slideIn 0.3s ease-out forwards ${index * 0.05}s`;
-                    btn.style.opacity = 0;
-                    btn.onclick = () => selectAnswer(opt.t);
-                    gridEl.appendChild(btn);
-                });
-            }, 50);
+            // Render Options
+            q.options.forEach((opt, index) => {
+                // Word Cell
+                const wordDiv = document.createElement('div');
+                wordDiv.className = 'word-cell';
+                wordDiv.innerHTML = `<span style="color:#999; font-size:0.8em;">${opt.s}</span> ${opt.v}`;
+                container.appendChild(wordDiv);
+
+                // Most Like Radio
+                const mostDiv = document.createElement('div');
+                mostDiv.className = 'radio-cell';
+                const mostInput = document.createElement('input');
+                mostInput.type = 'radio';
+                mostInput.name = `q${currentQuestion}_most`;
+                mostInput.className = 'custom-radio';
+                mostInput.checked = currentAns && currentAns.most === opt.t;
+                mostInput.onclick = () => handleSelection('most', opt.t);
+                mostDiv.appendChild(mostInput);
+                container.appendChild(mostDiv);
+
+                // Least Like Radio
+                const leastDiv = document.createElement('div');
+                leastDiv.className = 'radio-cell';
+                const leastInput = document.createElement('input');
+                leastInput.type = 'radio';
+                leastInput.name = `q${currentQuestion}_least`;
+                leastInput.className = 'custom-radio';
+                leastInput.checked = currentAns && currentAns.least === opt.t;
+                leastInput.onclick = () => handleSelection('least', opt.t);
+                leastDiv.appendChild(leastInput);
+                container.appendChild(leastDiv);
+            });
         }
 
-        function selectAnswer(type) {
-            userAnswers[currentQuestion] = type;
-            showQuestion();
-            if (currentQuestion < questions.length - 1) {
-                setTimeout(() => {
-                    nextQuestion();
-                }, 300);
-            } else {
-                setTimeout(() => {
-                    nextQuestion();
-                }, 300);
+        function handleSelection(type, value) {
+            if (!userAnswers[currentQuestion]) {
+                userAnswers[currentQuestion] = { most: null, least: null };
             }
+
+            // Prevent selecting same option for both
+            if (type === 'most' && userAnswers[currentQuestion].least === value) {
+                userAnswers[currentQuestion].least = null;
+            }
+            if (type === 'least' && userAnswers[currentQuestion].most === value) {
+                userAnswers[currentQuestion].most = null;
+            }
+
+            userAnswers[currentQuestion][type] = value;
+            showQuestion(); // Re-render to update states
         }
 
         function prevQuestion() {
@@ -707,7 +779,8 @@
         }
 
         function nextQuestion() {
-            if (userAnswers[currentQuestion] === null) return;
+            const currentAns = userAnswers[currentQuestion];
+            if (!currentAns || !currentAns.most || !currentAns.least) return;
 
             if (currentQuestion < questions.length - 1) {
                 currentQuestion++;
@@ -721,14 +794,31 @@
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('result-container').style.display = 'block';
 
+            // Scoring Logic:
+            // Graph 1 (Public Self): Count of 'Most Like'
+            // Graph 2 (Private Self): Count of 'Least Like' (Usually inverse or specific mapping, here we simplify to count)
+            // Graph 3 (Perceived Self): Most - Least (Simplified)
+
+            // For this specific request, user asked to "select corresponding shape score".
+            // We will calculate the total count for each Type (Shape).
+            // D (Star), I (Triangle), S (Circle), C (Square)
+
+            // We will use the "Most Like" count as the primary score for now, 
+            // as it's the most common "Dominant Style" indicator in simple tests.
+            // Or we can combine them. Let's count "Most" as +1.
+
             let scores = { D: 0, I: 0, S: 0, C: 0 };
+
             userAnswers.forEach(ans => {
-                if (ans) scores[ans]++;
+                if (ans && ans.most) scores[ans.most]++;
+                // We are not subtracting 'least' for the main profile in this simple view, 
+                // but usually 'Least' is used for a separate graph. 
+                // We will display the 'Most' score as the primary result.
             });
 
             let maxScore = -1;
             let winner = '';
-            let total = questions.length;
+            let total = questions.length; // Total 'Most' votes = 28
 
             for (let type in scores) {
                 if (scores[type] > maxScore) {
@@ -736,8 +826,11 @@
                     winner = type;
                 }
                 const percent = (scores[type] / total) * 100;
+
+                // Animate bars
                 setTimeout(() => {
-                    document.getElementById(`bar-${type}`).style.height = `${percent}%`;
+                    const bar = document.getElementById(`bar-${type}`);
+                    bar.style.height = `${percent}%`;
                     document.getElementById(`val-${type}`).innerText = scores[type];
                 }, 100);
             }
