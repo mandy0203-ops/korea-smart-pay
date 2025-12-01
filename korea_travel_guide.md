@@ -139,13 +139,12 @@
     *   LINE Pay 回饋有「總預算上限」，月底去可能會有活動額度已滿的風險，記得關注最新狀況。
     *   單筆滿 19 萬韓元才有最高回饋，建議可以和朋友**湊單結帳**。
 
----
-
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&display=swap');
+    /* Removed Google Font import to avoid loading issues and mojibake */
     
     body {
-        font-family: "Gaegu", "Chalkboard SE", "Comic Sans MS", sans-serif;
+        /* Prioritize macOS Traditional Chinese handwritten fonts */
+        font-family: "HanziPen TC", "Wawati TC", "Chalkboard SE", "PingFang TC", sans-serif;
         color: #555;
         background-color: #fffdf9;
         padding: 20px;
@@ -154,7 +153,8 @@
     h1, h2, h3 {
         color: #ff8b94;
         font-weight: 700;
-        font-family: "Gaegu", cursive;
+        /* Use the same font stack for headings */
+        font-family: "HanziPen TC", "Wawati TC", "Chalkboard SE", "PingFang TC", sans-serif;
     }
     h1 {
         text-align: center;
