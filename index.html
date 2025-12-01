@@ -100,6 +100,7 @@
         const Plane = (props) => <IconBase {...props}><path d="M2 8h20" /><path d="m15.2 7-.9-4" /><path d="m5.9 7-.9-4" /><path d="M2 17h20" /><path d="m15.2 17-.9 4" /><path d="m5.9 17-.9 4" /></IconBase>;
         const Edit3 = (props) => <IconBase {...props}><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></IconBase>;
         const MessageSquare = (props) => <IconBase {...props}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></IconBase>;
+        const BookOpen = (props) => <IconBase {...props}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></IconBase>;
 
         // --- 2025 韓國旅遊信用卡資料庫 (12月最新版 - 精簡版) ---
         const INITIAL_PAYMENT_METHODS = [
@@ -887,6 +888,61 @@
                             </div>
                         )}
 
+                        {activeTab === 'guide' && (
+                            <div className="animate-fade-in space-y-4 pb-20">
+                                <h2 className="text-xl font-bold text-center mb-4">📘 旅遊攻略</h2>
+
+                                <HandDrawnCard className="border-l-4 border-l-yellow-400">
+                                    <h3 className="font-bold text-lg mb-2 flex items-center gap-2">💳 支付黃金三角</h3>
+                                    <div className="space-y-3 text-sm">
+                                        <div className="bg-yellow-50 p-2 rounded">
+                                            <div className="font-bold text-yellow-800">👑 LINE Pay (大額/免稅)</div>
+                                            <p className="text-gray-600">綁定中信 LINE Pay 卡 + VISA，最高 30% 回饋。</p>
+                                            <p className="text-xs text-red-500 mt-1">*注意：樂天百貨額度可能已滿</p>
+                                        </div>
+                                        <div className="bg-blue-50 p-2 rounded">
+                                            <div className="font-bold text-blue-800">🏪 便利商店 (台灣 Pay)</div>
+                                            <p className="text-gray-600">CU / GS25 必用，15% 回饋免手續費。</p>
+                                        </div>
+                                        <div className="bg-gray-50 p-2 rounded">
+                                            <div className="font-bold text-gray-800">🍽️ 吃飯/路邊攤</div>
+                                            <p className="text-gray-600">實體卡 (海外回饋高) 或 Apple Pay。</p>
+                                        </div>
+                                    </div>
+                                </HandDrawnCard>
+
+                                <HandDrawnCard className="border-l-4 border-l-pink-400">
+                                    <h3 className="font-bold text-lg mb-2 flex items-center gap-2">🛍️ 必買與穿搭</h3>
+                                    <ul className="list-disc list-inside text-sm space-y-1 text-gray-700">
+                                        <li><span className="font-bold">雪靴：</span>迪卡儂 (防水防滑)，<span className="text-red-500">勿穿 UGG</span>。</li>
+                                        <li><span className="font-bold">老奶奶背心：</span>市場姨母款，保暖時尚。</li>
+                                        <li><span className="font-bold">廣藏市場：</span>棉被、潮牌一條街 (西門1F 270號)。</li>
+                                        <li><span className="font-bold">聖水洞：</span>Beton 麵包 (內用較快)。</li>
+                                        <li><span className="font-bold">CU 必買：</span>生命源泉(綠)、褪黑素(藍)、蘋果醋(黃)、葡萄柚(紫)。</li>
+                                    </ul>
+                                </HandDrawnCard>
+
+                                <HandDrawnCard className="border-l-4 border-l-green-400">
+                                    <h3 className="font-bold text-lg mb-2 flex items-center gap-2">✈️ 實用資訊</h3>
+                                    <ul className="list-disc list-inside text-sm space-y-1 text-gray-700">
+                                        <li><span className="font-bold">行動電源：</span>搭韓籍航空需貼絕緣膠帶。</li>
+                                        <li><span className="font-bold">AREX：</span>直達車(橘)不停弘大；普通車(藍)停弘大。</li>
+                                        <li><span className="font-bold">入境：</span>申請 SES 自動通關，避開人潮。</li>
+                                        <li><span className="font-bold">APP：</span>Naver Map, Kakao T, Papago, Catch Table。</li>
+                                    </ul>
+                                </HandDrawnCard>
+
+                                <HandDrawnCard className="border-l-4 border-l-orange-400">
+                                    <h3 className="font-bold text-lg mb-2 flex items-center gap-2">🍽️ 美食避雷</h3>
+                                    <ul className="list-disc list-inside text-sm space-y-1 text-gray-700">
+                                        <li><span className="font-bold">弘大：</span>正直的金先生 (紫菜包飯)。</li>
+                                        <li><span className="font-bold">明洞：</span>夜市小吃貴，建議吃烤肉。</li>
+                                        <li><span className="font-bold">布帳馬車：</span>氣氛好但貴，<span className="text-red-500">別點辣白菜煎餅</span>。</li>
+                                    </ul>
+                                </HandDrawnCard>
+                            </div>
+                        )}
+
                         {activeTab === 'settings' && (
                             <div className="space-y-4 animate-fade-in">
                                 <h2 className="text-xl font-bold text-center mb-4">⚙️ 設定與預算</h2>
@@ -941,7 +997,13 @@
                             <span className="text-[10px] font-bold">記帳</span>
                         </button>
 
-                        <div className="w-px h-8 bg-gray-200"></div>
+                        <button
+                            onClick={() => setActiveTab('guide')}
+                            className={`flex flex-col items-center gap-1 ${activeTab === 'guide' ? 'text-[#FF6B6B] scale-110' : 'text-gray-400'}`}
+                        >
+                            <BookOpen size={24} />
+                            <span className="text-[10px] font-bold">攻略</span>
+                        </button>
 
                         <button
                             onClick={() => setActiveTab('stats')}
