@@ -473,8 +473,19 @@
         function KoreaSmartPay() {
             const [activeTab, setActiveTab] = useState('calculator');
             const [amountKRW, setAmountKRW] = useState('');
-            const [manualRate, setManualRate] = useState(0.024);
-            const [totalBudget, setTotalBudget] = useState(20000);
+
+            // 讀取儲存的匯率，如果沒有則使用預設值 0.024
+            const [manualRate, setManualRate] = useState(() => {
+                const saved = localStorage.getItem('manualRate');
+                return saved ? parseFloat(saved) : 0.024;
+            });
+
+            // 讀取儲存的預算，如果沒有則使用預設值 20000
+            const [totalBudget, setTotalBudget] = useState(() => {
+                const saved = localStorage.getItem('totalBudget');
+                return saved ? parseFloat(saved) : 20000;
+            });
+
             const [openMenuId, setOpenMenuId] = useState(null);
 
             const [isModalOpen, setIsModalOpen] = useState(false);
@@ -485,14 +496,22 @@
                 return saved ? JSON.parse(saved) : [];
             });
 
+            // 當資料變動時，自動儲存到 LocalStorage
             useEffect(() => {
                 localStorage.setItem('expenses', JSON.stringify(expenses));
             }, [expenses]);
 
+            useEffect(() => {
+                localStorage.setItem('manualRate', manualRate);
+            }, [manualRate]);
+
+            useEffect(() => {
+                localStorage.setItem('totalBudget', totalBudget);
+            }, [totalBudget]);
+
             // Fix 1: 使用 useCallback 優化效能，並確保依賴正確
             const calculateCost = useCallback((krw, method) => {
                 // 統一使用手動設定的匯率
-                const rate = manualRate;
                 const baseTWD = krw * rate;
                 const fee = baseTWD * (method.handlingFee / 100);
                 const reward = baseTWD * (method.rewardRate / 100);
