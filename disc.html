@@ -574,25 +574,25 @@
                         <div class="bar bg-D" id="bar-D" style="height: 0%">
                             <span class="bar-value" id="val-D">0</span>
                         </div>
-                        <span class="bar-label">D (★)</span>
+                        <span class="bar-label">D (Z)</span>
                     </div>
                     <div class="bar-group">
                         <div class="bar bg-I" id="bar-I" style="height: 0%">
                             <span class="bar-value" id="val-I">0</span>
                         </div>
-                        <span class="bar-label">I (▲)</span>
+                        <span class="bar-label">I (■)</span>
                     </div>
                     <div class="bar-group">
                         <div class="bar bg-S" id="bar-S" style="height: 0%">
                             <span class="bar-value" id="val-S">0</span>
                         </div>
-                        <span class="bar-label">S (●)</span>
+                        <span class="bar-label">S (▲)</span>
                     </div>
                     <div class="bar-group">
                         <div class="bar bg-C" id="bar-C" style="height: 0%">
                             <span class="bar-value" id="val-C">0</span>
                         </div>
-                        <span class="bar-label">C (■)</span>
+                        <span class="bar-label">C (★)</span>
                     </div>
                 </div>
 
@@ -618,37 +618,37 @@
     </div>
 
     <script>
-        // 28 Questions with Shapes Mapping
-        // D=Star(★), I=Triangle(▲), S=Circle(●), C=Square(■)
+        // 28 Questions with Specific Symbols Mapping
+        // Z=D (Dominance), ■=I (Influence), ▲=S (Steadiness), ★=C (Compliance)
         const questions = [
-            { id: 1, options: [{ t: "C", v: "應對得體的", s: "■" }, { t: "D", v: "開發能力強", s: "★" }, { t: "I", v: "樂觀開朗的", s: "▲" }, { t: "S", v: "喜好助人的", s: "●" }] },
-            { id: 2, options: [{ t: "D", v: "富好勝心的", s: "★" }, { t: "S", v: "親切無架子", s: "●" }, { t: "I", v: "討喜迷人的", s: "▲" }, { t: "C", v: "謹慎有禮的", s: "■" }] },
-            { id: 3, options: [{ t: "C", v: "溫和不強勢", s: "■" }, { t: "I", v: "說服力強的", s: "▲" }, { t: "S", v: "願意配合的", s: "●" }, { t: "D", v: "饒富創意的", s: "★" }] },
-            { id: 4, options: [{ t: "D", v: "冒險性強的", s: "★" }, { t: "C", v: "洞察力強的", s: "■" }, { t: "I", v: "喜好社交的", s: "▲" }, { t: "S", v: "穩健踏實的", s: "●" }] },
-            { id: 5, options: [{ t: "I", v: "喜好社團的", s: "▲" }, { t: "C", v: "內斂不莽撞", s: "■" }, { t: "D", v: "極具自信心", s: "★" }, { t: "S", v: "說話溫和的", s: "●" }] },
-            { id: 6, options: [{ t: "C", v: "謹慎小心的", s: "■" }, { t: "D", v: "當機立斷的", s: "★" }, { t: "I", v: "影響力強的", s: "▲" }, { t: "S", v: "和藹可親的", s: "●" }] },
-            { id: 7, options: [{ t: "I", v: "表情豐富的", s: "▲" }, { t: "C", v: "說話客觀的", s: "■" }, { t: "D", v: "掌控性強的", s: "★" }, { t: "S", v: "願意回應的", s: "●" }] },
-            { id: 8, options: [{ t: "C", v: "重視紀律的", s: "■" }, { t: "S", v: "對人寬容的", s: "●" }, { t: "I", v: "熱情活潑的", s: "▲" }, { t: "D", v: "堅持有毅力", s: "★" }] },
-            { id: 9, options: [{ t: "D", v: "喜歡爭辯的", s: "★" }, { t: "C", v: "有條不紊的", s: "■" }, { t: "S", v: "願意合作的", s: "●" }, { t: "I", v: "無憂無慮的", s: "▲" }] },
-            { id: 10, options: [{ t: "D", v: "抗壓性高的", s: "★" }, { t: "C", v: "實事求是的", s: "■" }, { t: "S", v: "善解人意的", s: "●" }, { t: "I", v: "交遊廣闊的", s: "▲" }] },
-            { id: 11, options: [{ t: "I", v: "容易情緒化", s: "▲" }, { t: "S", v: "容易滿足的", s: "●" }, { t: "D", v: "強勢且主觀", s: "★" }, { t: "C", v: "順從適應的", s: "■" }] },
-            { id: 12, options: [{ t: "D", v: "求新求變的", s: "★" }, { t: "I", v: "信賴別人的", s: "▲" }, { t: "S", v: "有始有終的", s: "●" }, { t: "C", v: "注重程序的", s: "■" }] },
-            { id: 13, options: [{ t: "I", v: "情感衝動的", s: "▲" }, { t: "C", v: "內斂自省的", s: "■" }, { t: "D", v: "堅強有個性", s: "★" }, { t: "S", v: "隨和易處的", s: "●" }] },
-            { id: 14, options: [{ t: "D", v: "好勝心強的", s: "★" }, { t: "I", v: "圓滑多變的", s: "▲" }, { t: "S", v: "忠誠穩定的", s: "●" }, { t: "C", v: "自律甚嚴的", s: "■" }] },
-            { id: 15, options: [{ t: "C", v: "要求精確的", s: "■" }, { t: "S", v: "服從性高的", s: "●" }, { t: "D", v: "要求別人的", s: "★" }, { t: "I", v: "愛開玩笑的", s: "▲" }] },
-            { id: 16, options: [{ t: "I", v: "愛出風頭的", s: "▲" }, { t: "S", v: "體諒別人的", s: "●" }, { t: "C", v: "公平公正的", s: "■" }, { t: "D", v: "堅持己見的", s: "★" }] },
-            { id: 17, options: [{ t: "I", v: "能鼓舞人的", s: "▲" }, { t: "S", v: "合群團結的", s: "●" }, { t: "C", v: "完美主義的", s: "■" }, { t: "D", v: "獨立自主的", s: "★" }] },
-            { id: 18, options: [{ t: "S", v: "願意順應的", s: "●" }, { t: "D", v: "個性急切的", s: "★" }, { t: "C", v: "沉著穩健的", s: "■" }, { t: "I", v: "熱情洋溢的", s: "▲" }] },
-            { id: 19, options: [{ t: "I", v: "友善親切的", s: "▲" }, { t: "C", v: "精準無比的", s: "■" }, { t: "D", v: "直言不諱的", s: "★" }, { t: "S", v: "平實平淡的", s: "●" }] },
-            { id: 20, options: [{ t: "D", v: "企圖心很強", s: "★" }, { t: "I", v: "常激勵他人", s: "▲" }, { t: "S", v: "持續力強的", s: "●" }, { t: "C", v: "行事謹慎的", s: "■" }] },
-            { id: 21, options: [{ t: "I", v: "幽默風趣的", s: "▲" }, { t: "D", v: "主導掌控的", s: "★" }, { t: "C", v: "彬彬有禮的", s: "■" }, { t: "S", v: "沈默寡言的", s: "●" }] },
-            { id: 22, options: [{ t: "D", v: "精力旺盛的", s: "★" }, { t: "S", v: "親切緩和的", s: "●" }, { t: "I", v: "討人喜歡的", s: "▲" }, { t: "C", v: "井然有序的", s: "■" }] },
-            { id: 23, options: [{ t: "D", v: "具競爭力的", s: "★" }, { t: "C", v: "顧慮周全的", s: "■" }, { t: "I", v: "興高采烈的", s: "▲" }, { t: "S", v: "注重隱私的", s: "●" }] },
-            { id: 24, options: [{ t: "D", v: "決斷力強的", s: "★" }, { t: "I", v: "社交力強的", s: "▲" }, { t: "S", v: "專業性強的", s: "●" }, { t: "C", v: "分析力強的", s: "■" }] },
-            { id: 25, options: [{ t: "C", v: "有所保留的", s: "■" }, { t: "S", v: "誠懇溫柔的", s: "●" }, { t: "D", v: "意志堅定的", s: "★" }, { t: "I", v: "快活自在的", s: "▲" }] },
-            { id: 26, options: [{ t: "C", v: "邏輯性強的", s: "■" }, { t: "D", v: "大膽且主動", s: "★" }, { t: "S", v: "忠誠不變的", s: "●" }, { t: "I", v: "魅力十足的", s: "▲" }] },
-            { id: 27, options: [{ t: "I", v: "怡然自得的", s: "▲" }, { t: "C", v: "觀察敏銳的", s: "■" }, { t: "S", v: "容易羞怯的", s: "●" }, { t: "D", v: "缺乏耐心的", s: "★" }] },
-            { id: 28, options: [{ t: "D", v: "勇敢有擔當", s: "★" }, { t: "I", v: "嘴甜喜讚美", s: "▲" }, { t: "S", v: "溫和肯付出", s: "●" }, { t: "C", v: "保守愛亂想", s: "■" }] }
+            { id: 1, options: [{ t: "C", v: "應對得體的", s: "★" }, { t: "D", v: "開發能力強", s: "Z" }, { t: "I", v: "樂觀開朗的", s: "■" }, { t: "S", v: "喜好助人的", s: "▲" }] },
+            { id: 2, options: [{ t: "D", v: "富好勝心的", s: "Z" }, { t: "S", v: "親切無架子", s: "▲" }, { t: "I", v: "討喜迷人的", s: "■" }, { t: "C", v: "謹慎有禮的", s: "★" }] },
+            { id: 3, options: [{ t: "S", v: "溫和不強勢", s: "▲" }, { t: "I", v: "說服力強的", s: "■" }, { t: "C", v: "願意配合的", s: "★" }, { t: "D", v: "饒富創意的", s: "Z" }] },
+            { id: 4, options: [{ t: "D", v: "冒險性強的", s: "Z" }, { t: "C", v: "洞察力強的", s: "★" }, { t: "I", v: "喜好社交的", s: "■" }, { t: "S", v: "穩健踏實的", s: "▲" }] },
+            { id: 5, options: [{ t: "I", v: "喜好社團的", s: "■" }, { t: "C", v: "內斂不莽撞", s: "★" }, { t: "D", v: "極具自信心", s: "Z" }, { t: "S", v: "說話溫和的", s: "▲" }] },
+            { id: 6, options: [{ t: "C", v: "謹慎小心的", s: "★" }, { t: "D", v: "當機立斷的", s: "Z" }, { t: "I", v: "影響力強的", s: "■" }, { t: "S", v: "和藹可親的", s: "▲" }] },
+            { id: 7, options: [{ t: "I", v: "表情豐富的", s: "■" }, { t: "C", v: "說話客觀的", s: "★" }, { t: "D", v: "掌控性強的", s: "Z" }, { t: "S", v: "願意回應的", s: "▲" }] },
+            { id: 8, options: [{ t: "C", v: "重視紀律的", s: "★" }, { t: "S", v: "對人寬容的", s: "▲" }, { t: "I", v: "熱情活潑的", s: "■" }, { t: "D", v: "堅持有毅力", s: "Z" }] },
+            { id: 9, options: [{ t: "D", v: "喜歡爭辯的", s: "Z" }, { t: "C", v: "有條不紊的", s: "★" }, { t: "S", v: "願意合作的", s: "▲" }, { t: "I", v: "無憂無慮的", s: "■" }] },
+            { id: 10, options: [{ t: "D", v: "抗壓性高的", s: "Z" }, { t: "C", v: "實事求是的", s: "★" }, { t: "S", v: "善解人意的", s: "▲" }, { t: "I", v: "交遊廣闊的", s: "■" }] },
+            { id: 11, options: [{ t: "I", v: "容易情緒化", s: "■" }, { t: "S", v: "容易滿足的", s: "▲" }, { t: "D", v: "強勢且主觀", s: "Z" }, { t: "C", v: "順從適應的", s: "★" }] },
+            { id: 12, options: [{ t: "D", v: "求新求變的", s: "Z" }, { t: "I", v: "信賴別人的", s: "■" }, { t: "S", v: "有始有終的", s: "▲" }, { t: "C", v: "注重程序的", s: "★" }] },
+            { id: 13, options: [{ t: "I", v: "情感衝動的", s: "■" }, { t: "C", v: "內斂自省的", s: "★" }, { t: "D", v: "堅強有個性", s: "Z" }, { t: "S", v: "隨和易處的", s: "▲" }] },
+            { id: 14, options: [{ t: "D", v: "好勝心強的", s: "Z" }, { t: "I", v: "圓滑多變的", s: "■" }, { t: "S", v: "忠誠穩定的", s: "▲" }, { t: "C", v: "自律甚嚴的", s: "★" }] },
+            { id: 15, options: [{ t: "C", v: "要求精確的", s: "★" }, { t: "S", v: "服從性高的", s: "▲" }, { t: "D", v: "要求別人的", s: "Z" }, { t: "I", v: "愛開玩笑的", s: "■" }] },
+            { id: 16, options: [{ t: "I", v: "愛出風頭的", s: "■" }, { t: "S", v: "體諒別人的", s: "▲" }, { t: "C", v: "公平公正的", s: "★" }, { t: "D", v: "堅持己見的", s: "Z" }] },
+            { id: 17, options: [{ t: "I", v: "能鼓舞人的", s: "■" }, { t: "S", v: "合群團結的", s: "▲" }, { t: "C", v: "完美主義的", s: "★" }, { t: "D", v: "獨立自主的", s: "Z" }] },
+            { id: 18, options: [{ t: "S", v: "願意順應的", s: "▲" }, { t: "D", v: "個性急切的", s: "Z" }, { t: "C", v: "沉著穩健的", s: "★" }, { t: "D", v: "熱情洋溢的", s: "Z" }] },
+            { id: 19, options: [{ t: "I", v: "友善親切的", s: "■" }, { t: "C", v: "精準無比的", s: "★" }, { t: "D", v: "直言不諱的", s: "Z" }, { t: "S", v: "平實平淡的", s: "▲" }] },
+            { id: 20, options: [{ t: "D", v: "企圖心很強", s: "Z" }, { t: "I", v: "常激勵他人", s: "■" }, { t: "S", v: "持續力強的", s: "▲" }, { t: "C", v: "行事謹慎的", s: "★" }] },
+            { id: 21, options: [{ t: "I", v: "幽默風趣的", s: "■" }, { t: "D", v: "主導掌控的", s: "Z" }, { t: "C", v: "彬彬有禮的", s: "★" }, { t: "S", v: "沈默寡言的", s: "▲" }] },
+            { id: 22, options: [{ t: "D", v: "精力旺盛的", s: "Z" }, { t: "S", v: "親切緩和的", s: "▲" }, { t: "I", v: "討人喜歡的", s: "■" }, { t: "C", v: "井然有序的", s: "★" }] },
+            { id: 23, options: [{ t: "D", v: "具競爭力的", s: "Z" }, { t: "C", v: "顧慮周全的", s: "★" }, { t: "I", v: "興高采烈的", s: "■" }, { t: "S", v: "注重隱私的", s: "▲" }] },
+            { id: 24, options: [{ t: "D", v: "決斷力強的", s: "Z" }, { t: "I", v: "社交力強的", s: "■" }, { t: "S", v: "專業性強的", s: "▲" }, { t: "C", v: "分析力強的", s: "★" }] },
+            { id: 25, options: [{ t: "C", v: "有所保留的", s: "★" }, { t: "S", v: "誠懇溫柔的", s: "▲" }, { t: "D", v: "意志堅定的", s: "Z" }, { t: "I", v: "快活自在的", s: "■" }] },
+            { id: 26, options: [{ t: "C", v: "邏輯性強的", s: "★" }, { t: "D", v: "大膽且主動", s: "Z" }, { t: "S", v: "忠誠不變的", s: "▲" }, { t: "I", v: "魅力十足的", s: "■" }] },
+            { id: 27, options: [{ t: "I", v: "怡然自得的", s: "■" }, { t: "C", v: "觀察敏銳的", s: "★" }, { t: "S", v: "容易羞怯的", s: "▲" }, { t: "D", v: "缺乏耐心的", s: "Z" }] },
+            { id: 28, options: [{ t: "D", v: "勇敢有擔當", s: "Z" }, { t: "I", v: "嘴甜喜讚美", s: "■" }, { t: "S", v: "溫和肯付出", s: "▲" }, { t: "C", v: "保守愛亂想", s: "★" }] }
         ];
 
         const results = {
@@ -679,7 +679,6 @@
         };
 
         let currentQuestion = 0;
-        // userAnswers[i] = { most: 'D', least: 'C' }
         let userAnswers = new Array(questions.length).fill(null);
 
         function startQuiz() {
@@ -714,7 +713,6 @@
             nextBtn.disabled = !isAnswered;
 
             // Clear previous options (keep headers)
-            // Remove all elements after the first 3 (headers)
             while (container.children.length > 3) {
                 container.removeChild(container.lastChild);
             }
@@ -724,7 +722,7 @@
                 // Word Cell
                 const wordDiv = document.createElement('div');
                 wordDiv.className = 'word-cell';
-                wordDiv.innerHTML = `<span style="color:#999; font-size:0.8em;">${opt.s}</span> ${opt.v}`;
+                wordDiv.innerHTML = `<span style="color:#999; font-size:0.8em; margin-right:8px;">${opt.s}</span> ${opt.v}`;
                 container.appendChild(wordDiv);
 
                 // Most Like Radio
@@ -793,31 +791,15 @@
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('result-container').style.display = 'block';
 
-            // Scoring Logic:
-            // Graph 1 (Public Self): Count of 'Most Like'
-            // Graph 2 (Private Self): Count of 'Least Like' (Usually inverse or specific mapping, here we simplify to count)
-            // Graph 3 (Perceived Self): Most - Least (Simplified)
-
-            // For this specific request, user asked to "select corresponding shape score".
-            // We will calculate the total count for each Type (Shape).
-            // D (Star), I (Triangle), S (Circle), C (Square)
-
-            // We will use the "Most Like" count as the primary score for now, 
-            // as it's the most common "Dominant Style" indicator in simple tests.
-            // Or we can combine them. Let's count "Most" as +1.
-
             let scores = { D: 0, I: 0, S: 0, C: 0 };
 
             userAnswers.forEach(ans => {
                 if (ans && ans.most) scores[ans.most]++;
-                // We are not subtracting 'least' for the main profile in this simple view, 
-                // but usually 'Least' is used for a separate graph. 
-                // We will display the 'Most' score as the primary result.
             });
 
             let maxScore = -1;
             let winner = '';
-            let total = questions.length; // Total 'Most' votes = 28
+            let total = questions.length;
 
             for (let type in scores) {
                 if (scores[type] > maxScore) {
