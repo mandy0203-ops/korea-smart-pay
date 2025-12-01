@@ -1,0 +1,133 @@
+/* Hand-drawn Note Style for PDF */
+
+@font-face {
+    font-family: 'HanziPen TC';
+    src: local('HanziPen TC'), local('HanziPenTC-Regular');
+}
+
+body {
+    font-family: "HanziPen TC", "Wawati TC", "Chalkboard SE", "PingFang TC", sans-serif;
+    color: #555;
+    background-color: #fffdf9;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #ff8b94;
+    font-weight: 700;
+    font-family: "HanziPen TC", "Wawati TC", "Chalkboard SE", "PingFang TC", sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    border-bottom: 3px dashed #ffaaa5;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-top: 40px;
+    border-left: 5px solid #ffd3b6;
+    padding-left: 15px;
+    background: linear-gradient(to right, #fff5e6, transparent);
+}
+
+h3 {
+    font-size: 22px;
+    color: #a8e6cf;
+    background: #fff;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 2px solid #a8e6cf;
+    margin-top: 20px;
+}
+
+/* Links */
+a {
+    color: #ff8b94;
+    text-decoration: none;
+    border-bottom: 1px dotted #ff8b94;
+    transition: all 0.3s;
+}
+
+/* Tables (for the Thumbnail Grid) */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px; /* Space between rows */
+    margin-top: 10px;
+}
+
+tr {
+    background-color: #fff;
+    box-shadow: 3px 3px 0px #ffe5d9;
+}
+
+td {
+    padding: 15px;
+    border-top: 2px solid #ffd3b6;
+    border-bottom: 2px solid #ffd3b6;
+}
+
+td:first-child {
+    border-left: 2px solid #ffd3b6;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    width: 160px; /* Fixed width for image column */
+    text-align: center;
+}
+
+td:last-child {
+    border-right: 2px solid #ffd3b6;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    vertical-align: middle;
+}
+
+/* Images */
+img {
+    border-radius: 8px;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 100%;
+}
+
+/* Lists */
+ul {
+    list-style: none;
+    padding: 0;
+    background: #fff;
+    border: 2px dashed #dcedc1;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 5px 5px 0px #f0f0f0;
+}
+
+li {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 16px;
+}
+
+li::before {
+    content: '🌸';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 14px;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 5px solid #ffaaa5;
+    background-color: #fff0f0;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border-radius: 0 10px 10px 0;
+}
