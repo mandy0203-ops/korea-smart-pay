@@ -886,23 +886,25 @@
             );
         };
 
-        // 2. 旅遊檢查表
-        const TravelChecklist = () => {
+        // 2. 行前清單 (Checklist)
+        const Checklist = () => {
             const [items, setItems] = useState(() => {
                 const saved = localStorage.getItem('checklist');
-                return saved ? JSON.parse(saved) : [
-                    { id: 1, text: '護照 (有效期6個月以上)', checked: false },
-                    { id: 2, text: 'Q-Code (入境檢疫)', checked: false },
-                    { id: 3, text: 'K-ETA (目前免簽但可申請)', checked: false },
-                    { id: 4, text: 'WOWPASS / T-Money 卡', checked: false },
-                    { id: 5, text: '網卡 / eSIM (開通漫遊)', checked: false },
-                    { id: 6, text: '轉接頭 (圓形兩孔 4.8mm)', checked: false },
+                if (saved) return JSON.parse(saved);
+                return [
+                    { id: 1, text: '護照 (效期六個月以上)', checked: false },
+                    { id: 2, text: 'WOWPASS / T-money 卡', checked: false },
+                    { id: 3, text: '網卡 / eSIM (先截圖 QR code)', checked: false },
+                    { id: 4, text: '轉接頭 (韓國是圓孔)', checked: false },
+                    { id: 5, text: '韓幣現金 (少量)', checked: false },
+                    { id: 6, text: '信用卡 (海外回饋高)', checked: false },
                     { id: 7, text: '行動電源 (不可託運)', checked: false },
                     { id: 8, text: '牙刷牙膏 (韓國環保不提供)', checked: false },
                     { id: 9, text: 'Naver Map / Kakao Map', checked: false },
                     { id: 10, text: 'Papago 翻譯 App', checked: false },
                 ];
             });
+            const [newItemText, setNewItemText] = useState('');
 
             useEffect(() => {
                 localStorage.setItem('checklist', JSON.stringify(items));
@@ -914,7 +916,25 @@
                 ));
             };
 
-            const progress = Math.round((items.filter(i => i.checked).length / items.length) * 100);
+            const handleAddItem = (e) => {
+                e.preventDefault();
+                if (!newItemText.trim()) return;
+                const newItem = {
+                    id: Date.now(),
+                    text: newItemText,
+                    checked: false
+                };
+                setItems([...items, newItem]);
+                setNewItemText('');
+            };
+
+            const handleDeleteItem = (id) => {
+                if (window.confirm('確定要刪除這個項目嗎？')) {
+                    setItems(items.filter(item => item.id !== id));
+                }
+            };
+
+            const progress = Math.round((items.filter(i => i.checked).length / items.length) * 100) || 0;
 
             return (
                 <div className="space-y-6 animate-fade-in">
@@ -932,22 +952,47 @@
                             <div className="bg-[#a8e6cf] h-2 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
                         </div>
 
+                        {/* Add Item Form */}
+                        <form onSubmit={handleAddItem} className="flex gap-2 mb-4">
+                            <input
+                                type="text"
+                                value={newItemText}
+                                onChange={(e) => setNewItemText(e.target.value)}
+                                placeholder="新增待辦事項..."
+                                className="flex-1 p-2 border-2 border-gray-200 rounded-lg focus:border-[#a8e6cf] focus:outline-none"
+                            />
+                            <button
+                                type="submit"
+                                className="bg-[#a8e6cf] text-white px-4 py-2 rounded-lg font-bold hover:bg-[#8fd9c0] transition-colors"
+                            >
+                                <PlusCircle size={20} />
+                            </button>
+                        </form>
+
                         <div className="space-y-3">
                             {items.map(item => (
-                                <label key={item.id} className={`flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all ${item.checked ? 'bg-[#f0f9f9] border-[#a8e6cf] opacity-60' : 'bg-white border-gray-100 hover:border-[#ffd3b6]'}`}>
-                                    <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors ${item.checked ? 'bg-[#a8e6cf] border-[#a8e6cf]' : 'border-gray-300'}`}>
-                                        {item.checked && <CheckSquare size={16} className="text-white" />}
-                                    </div>
-                                    <span className={`font-bold flex-1 ${item.checked ? 'line-through text-gray-400' : 'text-gray-700'}`}>
-                                        {item.text}
-                                    </span>
-                                    <input
-                                        type="checkbox"
-                                        checked={item.checked}
-                                        onChange={() => toggleItem(item.id)}
-                                        className="hidden"
-                                    />
-                                </label>
+                                <div key={item.id} className={`flex items-center gap-3 p-3 rounded-xl border-2 transition-all group ${item.checked ? 'bg-[#f0f9f9] border-[#a8e6cf] opacity-60' : 'bg-white border-gray-100 hover:border-[#ffd3b6]'}`}>
+                                    <label className="flex items-center gap-3 flex-1 cursor-pointer">
+                                        <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors ${item.checked ? 'bg-[#a8e6cf] border-[#a8e6cf]' : 'border-gray-300'}`}>
+                                            {item.checked && <CheckSquare size={16} className="text-white" />}
+                                        </div>
+                                        <span className={`font-bold flex-1 ${item.checked ? 'line-through text-gray-400' : 'text-gray-700'}`}>
+                                            {item.text}
+                                        </span>
+                                        <input
+                                            type="checkbox"
+                                            checked={item.checked}
+                                            onChange={() => toggleItem(item.id)}
+                                            className="hidden"
+                                        />
+                                    </label>
+                                    <button
+                                        onClick={() => handleDeleteItem(item.id)}
+                                        className="text-gray-300 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity p-1"
+                                    >
+                                        <Trash2 size={16} />
+                                    </button>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -1150,8 +1195,8 @@
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.id)}
                                     className={`flex items-center gap-1 px-4 py-2 rounded-full whitespace-nowrap transition-all border-2 ${activeCategory === cat.id
-                                            ? 'bg-[#ff8b94] text-white border-[#ff8b94] shadow-md'
-                                            : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'
+                                        ? 'bg-[#ff8b94] text-white border-[#ff8b94] shadow-md'
+                                        : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'
                                         }`}
                                 >
                                     <span>{cat.icon}</span>
@@ -1182,8 +1227,8 @@
                                     <button
                                         onClick={() => handleSpeak(phrase.kr, phrase.id)}
                                         className={`p-3 rounded-full transition-all active:scale-95 ${speakingId === phrase.id
-                                                ? 'bg-[#ff8b94] text-white shadow-inner animate-pulse'
-                                                : 'bg-gray-100 text-gray-400 hover:bg-pink-50 hover:text-pink-400'
+                                            ? 'bg-[#ff8b94] text-white shadow-inner animate-pulse'
+                                            : 'bg-gray-100 text-gray-400 hover:bg-pink-50 hover:text-pink-400'
                                             }`}
                                     >
                                         {speakingId === phrase.id ? <Volume2 size={24} /> : <Volume2 size={24} />}
@@ -1675,7 +1720,7 @@
 
                         {activeTab === 'split' && <SplitBill rate={manualRate} />}
 
-                        {activeTab === 'checklist' && <TravelChecklist />}
+                        {activeTab === 'checklist' && <Checklist />}
 
                         {
                             activeTab === 'stats' && (
