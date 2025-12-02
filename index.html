@@ -675,11 +675,28 @@
                                 <div className="flex gap-2">
                                     <input
                                         type="text"
+                                        inputMode="url"
+                                        autoComplete="off"
+                                        enterKeyHint="done"
                                         value={formData.href}
                                         onChange={(e) => setFormData({ ...formData, href: e.target.value })}
                                         className="flex-1 p-2 border-2 border-gray-200 rounded-xl focus:border-[#a8e6cf] outline-none"
                                         placeholder="貼上網址..."
                                     />
+                                    <button
+                                        onClick={async () => {
+                                            try {
+                                                const text = await navigator.clipboard.readText();
+                                                if (text) setFormData({ ...formData, href: text });
+                                            } catch (err) {
+                                                alert('無法讀取剪貼簿，請手動貼上 😅');
+                                            }
+                                        }}
+                                        className="bg-gray-100 text-gray-500 px-3 py-2 rounded-xl font-bold shadow-sm active:scale-95 whitespace-nowrap border-2 border-gray-200 hover:bg-gray-200"
+                                        title="貼上網址"
+                                    >
+                                        📋
+                                    </button>
                                     <button
                                         onClick={autoFill}
                                         disabled={isLoading || !formData.href}
