@@ -3,7 +3,7 @@
 ## Purpose
 - Operate solely through natural-language instructions; the user does not run commands or click UI on the agent's behalf.
 - Improve workflows iteratively using local tooling and shared documentation.
-- **Playbooks are essential**: short natural-language phrases/aliases that map to intents. The agent must check playbooks first on every task (`01-system/docs/agents/PLAYBOOKS.md`).
+- **Playbooks are essential**: short natural-language phrases/aliases that map to intents. The agent must check playbooks first on every task (`01-系統/docs/agents/PLAYBOOKS.md`).
 - Preserve long-term memory so future sessions stay fast and consistent.
 
 ## Invariants (Must Always Hold)
@@ -11,15 +11,15 @@
 2. **Local-first & reuse-first**: prefer existing tools, playbooks, and prompts before inventing new flows.
 3. **Minimal change & fast feedback**: take the smallest viable next step and surface results quickly.
 4. **Documentation via Lean Logflow**: choose the smallest logging mode that fits the work block.
-5. **Privacy & safety**: load secrets from `01-system/configs/apis/API-Keys.md` only when needed and never log them.
-6. **All artifacts live under `03-outputs/<tool>/...`**; cite relative paths when reporting.
+5. **Privacy & safety**: load secrets from `01-系統/configs/apis/API-Keys.md` only when needed and never log them.
+6. **All artifacts live under `03-輸出/<tool>/...`**; cite relative paths when reporting.
 7. **`registry.yaml` is the authoritative source for tools**; `docs/prompts/INDEX.md` is canonical for curated prompts.
 8. **User-facing docs must remain in Traditional Chinese（繁體中文）**.
 
 ## Startup Checklist (Every Session)
 1. **Read `STATE.md`** for the latest scaffold audit and standing next steps.
-2. **If filesystem structure changed or the audit is stale**, run the full scaffold verification; otherwise perform the quick check (verify sentinel files such as `AGENTS.md`, `registry.yaml`, `03-outputs/README.md`, and key tool folders).
-3. **Load required secrets** from `01-system/configs/apis/API-Keys.md` only when a task needs them.
+2. **If filesystem structure changed or the audit is stale**, run the full scaffold verification; otherwise perform the quick check (verify sentinel files such as `AGENTS.md`, `registry.yaml`, `03-輸出/README.md`, and key tool folders).
+3. **Load required secrets** from `01-系統/configs/apis/API-Keys.md` only when a task needs them.
 4. **Skim `AGENTS.md` for recent changes**; when material updates exist, review `PLAYBOOKS.md`, `TOOLS.md`, `SYSTEM_MEMORY.md`, `docs/prompts/INDEX.md`, and `docs/user/INDEX.md` for additional context.
 5. **Confirm operating constraints** (sandboxing, network, approvals) and decide whether to stay in Execution Mode or request Build Mode.
 
@@ -30,52 +30,57 @@
 ## Repository Layout (Live — keep updated)
 Maintain this tree as a living snapshot. Update it whenever structure changes or during startup if drift is detected.
 
-```
 /
-├─ 01-system/
+├─ 01-系統/
 │  ├─ configs/{env.example, apis/{README.md, API-Keys.md}, tools/registry.yaml}
 │  ├─ docs/
 │  │  ├─ agents/{PLAYBOOKS.md, TOOLS.md, TROUBLESHOOTING.md, SYSTEM_MEMORY.md, STATE.md, BOOTSTRAP.md, memory/YYYY-MM.md}
 │  │  ├─ prompts/{README.md, INDEX.md, examples/prompt-template.md, prompt-*.md, collections/...}
 │  │  └─ user/{README.md, INDEX.md, tools/...}  # 繁體中文
 │  └─ tools/{ops/, llms/, stt/, _categories-README.md}
-├─ 02-inputs/{downloads/}
-└─ 03-outputs/{README.md, <tool>/}
+├─ 02-輸入/{downloads/}
+└─ 03-輸出/{README.md, <tool>/}
 ```
 
+## 語言與命名規則 (Language & Naming Rules)
+1. **繁體中文優先**：所有深層資料夾、檔案命名、使用者文件、以及與使用者的溝通，除非系統強制要求（如程式碼關鍵字），否則一律使用**繁體中文**。
+2. **專案獨立性**：不同性質的專案（如韓國記帳軟體 vs DISC 測驗）應拆分為獨立的 GitHub Repository，避免混淆。
+   - DISC 測驗專案位置：`https://github.com/mandy0203-ops/disc-personality-test`
+   - 韓國記帳軟體專案位置：`https://github.com/mandy0203-ops/korea-smart-pay`
+
 ## Outputs (Single Source)
-- Store every artifact under `03-outputs/<tool>/`. Use descriptive tool or workflow slugs (`report-writer`, `image-cleanup`, etc.).
+- Store every artifact under `03-輸出/<tool>/`. Use descriptive tool or workflow slugs (`report-writer`, `image-cleanup`, etc.).
 - Within each tool folder, organize by run as needed (e.g., timestamps, `intermediate/`, `final/`). Apply one scheme consistently and document exceptions in the run summary.
-- Transient downloads belong in `03-outputs/<tool>/downloads/` and must be moved or cited before finishing the task.
+- Transient downloads belong in `03-輸出/<tool>/downloads/` and must be moved or cited before finishing the task.
 - Reference outputs with relative paths in the final message and in `SYSTEM_MEMORY.md` entries.
 
 ## Where Things Live
-- **Playbooks**: `01-system/docs/agents/PLAYBOOKS.md` — first stop for mapping phrases to intents.
-- **Prompts Library**: `01-system/docs/prompts/` — shared, curated prompts indexed in `INDEX.md` (keep metadata current).
-- **Tools**: `01-system/tools/<category>/...` with authoritative registration in `registry.yaml`.
-- **Tool index (human-readable)**: `01-system/docs/agents/TOOLS.md` mirrors the registry for readers.
-- **User documentation（繁體中文）**: `01-system/docs/user/INDEX.md` plus `docs/user/tools/<tool>.md` per asset.
+- **Playbooks**: `01-系統/docs/agents/PLAYBOOKS.md` — first stop for mapping phrases to intents.
+- **Prompts Library**: `01-系統/docs/prompts/` — shared, curated prompts indexed in `INDEX.md` (keep metadata current).
+- **Tools**: `01-系統/tools/<category>/...` with authoritative registration in `registry.yaml`.
+- **Tool index (human-readable)**: `01-系統/docs/agents/TOOLS.md` mirrors the registry for readers.
+- **User documentation（繁體中文）**: `01-系統/docs/user/INDEX.md` plus `docs/user/tools/<tool>.md` per asset.
 - **Memory & State**: `SYSTEM_MEMORY.md` (canonical log), `memory/YYYY-MM.md` (mirrors), `STATE.md` (phase, next steps, scaffold audit).
-- **Troubleshooting**: `01-system/docs/agents/TROUBLESHOOTING.md` collects reproducible fixes and escalation paths.
+- **Troubleshooting**: `01-系統/docs/agents/TROUBLESHOOTING.md` collects reproducible fixes and escalation paths.
 
 ## Execution Mode — Operating Procedure
 1. **Resolve intent via playbooks** before planning from scratch; clarify once if ambiguous.
 2. **Prefer registered tools and indexed prompts**. When multiple assets fit, choose the safest/local option and cite the prompt ID/version in reports.
-3. **Execute the smallest viable step**, writing all artifacts to `03-outputs/<tool>/...`.
+3. **Execute the smallest viable step**, writing all artifacts to `03-輸出/<tool>/...`.
 4. **Capture key command outputs** (summaries, not raw logs) and call out paths in the final response.
 5. **After each work block, apply Lean Logflow** (see below) — typically a standard run — updating `SYSTEM_MEMORY.md` and `STATE.md` only when the triggers apply.
 
 ## Build Mode Flow (Tools & Prompts)
 1. **Spec (1–3 bullets)**: name, category, inputs/outputs, side effects; for prompts add model/provider, variables, guardrails.
 2. **Scaffold**:
-   - Tool wrappers live under `01-system/tools/<category>/<tool-name>/` and default to `03-outputs/<tool-name>/...`.
-   - Prompts use `01-system/docs/prompts/prompt-<domain>-<intent>.md` (template below).
+   - Tool wrappers live under `01-系統/tools/<category>/<tool-name>/` and default to `03-輸出/<tool-name>/...`.
+   - Prompts use `01-系統/docs/prompts/prompt-<domain>-<intent>.md` (template below).
 3. **Register/Index**: update `registry.yaml` for tools and `docs/prompts/INDEX.md` for prompts immediately.
-4. **Smoke test**: run a minimal check; store artifacts under `03-outputs/<tool-name>/tests/` or similar.
+4. **Smoke test**: run a minimal check; store artifacts under `03-輸出/<tool-name>/tests/` or similar.
 5. **Docs update（含繁體中文）**: refresh `TOOLS.md`, `PLAYBOOKS.md`, `docs/user/tools/<tool>.md`, `docs/user/INDEX.md`, and note new assets in `SYSTEM_MEMORY.md`/`STATE.md`. Update the live repository layout if structure changed.
 6. **Return to Execution Mode** once the asset is ready.
 
-### Template — `01-system/docs/user/tools/<tool-name>.md`（請以繁體中文撰寫）
+### Template — `01-系統/docs/user/tools/<tool-name>.md`（請以繁體中文撰寫）
 ```markdown
 # <工具名稱>
 **類別**：<llms|stt|ops|…>
@@ -94,24 +99,24 @@ Maintain this tree as a living snapshot. Update it whenever structure changes or
 3. 步驟三：……
 
 ## 範例
-- **快速範例**：使用此短語：「……」→ 產出於 `03-outputs/<tool-name>/...`
+- **快速範例**：使用此短語：「……」→ 產出於 `03-輸出/<tool-name>/...`
 - **進階範例**：……
 
 ## 輸入 / 輸出路徑
-- 輸入來源：`02-inputs/...`
-- 產出位置：`03-outputs/<tool-name>/...`
+- 輸入來源：`02-輸入/...`
+- 產出位置：`03-輸出/<tool-name>/...`
 
 ## 風險與權限
 - 可能的副作用與需要的權限；高風險動作需再確認。
 
 ## 故障排除
-- 常見錯誤與解法（連結 `01-system/docs/agents/TROUBLESHOOTING.md` 相關條目）。
+- 常見錯誤與解法（連結 `01-系統/docs/agents/TROUBLESHOOTING.md` 相關條目）。
 
 ## 版本與更新紀錄
 - v0.1（YYYY-MM-DD）：初版。
 ```
 
-### Template — `01-system/docs/prompts/prompt-<domain>-<intent>.md`
+### Template — `01-系統/docs/prompts/prompt-<domain>-<intent>.md`
 ```markdown
 ---
 id: prompt-<domain>-<intent>-v1
@@ -136,7 +141,7 @@ safety:
 ## Usage
 - When to use: <guidance>
 - Invocation notes: <model quirks, rate limits>
-- Expected outputs: <format, quality bar, target path under 03-outputs/<tool>/>
+- Expected outputs: <format, quality bar, target path under 03-輸出/<tool>/>
 
 ## Prompt
 <Write the prompt body here. Use {{variables}} for substitutions.>
@@ -155,7 +160,7 @@ safety:
 - Reference prompts by id and version in reports.
 
 ## Playbooks — Authoring Rules (Essential)
-- Map phrases/aliases → intent → steps → expected outputs (`03-outputs/<tool>/...`).
+- Map phrases/aliases → intent → steps → expected outputs (`03-輸出/<tool>/...`).
 - Keep entries explicit and reusable; consolidate overlapping steps instead of duplicating.
 - Confirm the required tools/prompts exist (or request Build Mode) before finalizing updates.
 - **Always attempt playbook matching before free-form planning.**
@@ -167,7 +172,7 @@ safety:
 - **Milestone run**: rare, repo-wide or hand-off events → same entry format, with richer context if needed.
 
 ### Step 2 — Minimum DocSync
-1. **Append one line to `SYSTEM_MEMORY.md`** using `YYYY-MM-DD — Title :: change | impact | artifacts` (include relative paths under `03-outputs/<tool>/...`).
+1. **Append one line to `SYSTEM_MEMORY.md`** using `YYYY-MM-DD — Title :: change | impact | artifacts` (include relative paths under `03-輸出/<tool>/...`).
 2. **Mirror the entry to `memory/YYYY-MM.md`** only when the month changes or the user explicitly requests a digest.
 3. **If no triggers fire in Step 3**, stop here.
 
@@ -192,7 +197,7 @@ safety:
 - Follow prompt safety constraints and escalate when required.
 
 ## Reporting
-- Summaries must include what ran, key decisions, and cited artifact paths under `03-outputs/<tool>/...`.
+- Summaries must include what ran, key decisions, and cited artifact paths under `03-輸出/<tool>/...`.
 - Mention prompt IDs/versions used for LLM steps.
 - For errors, provide probable cause and a minimal recovery step.
 - For long operations, share concise progress notes without spamming.
@@ -200,7 +205,7 @@ safety:
 ## Ask-Once Checklist
 1. Missing env vars or secrets.
 2. Preferences affecting model/provider or tool choice.
-3. Ambiguity about the intent or target tool folder under `03-outputs/`.
+3. Ambiguity about the intent or target tool folder under `03-輸出/`.
 
 ## Change Management
 - Keep changes small and reversible; propose larger shifts before acting.
