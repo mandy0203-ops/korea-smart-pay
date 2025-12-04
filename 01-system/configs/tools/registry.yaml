@@ -1,0 +1,9 @@
+# Tool Registry — Single Source of Truth
+# Each tool entry:
+# - name: unique-id
+#   category: llms|ops|stt|tts|vision|web|data|io|...
+#   args_schema: {}          # optional JSON Schema-style summary
+#   side_effects: []         # e.g., ["fs:03-outputs/<tool>/..."]
+#   timeout_s: 600
+
+tools: []
