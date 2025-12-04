@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專案狀態儀表板 | Project Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --success-color: #10b981;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .last-update {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .status-active {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-build {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .big-stat {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .list-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            margin-top: 0.2rem;
+        }
+
+        .list-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .links-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .link-btn:hover {
+            background: #fff;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .icon {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>專案狀態儀表板</h1>
+                <p style="color: var(--text-muted)">Project Status Dashboard</p>
+            </div>
+            <div class="last-update">
+                最後更新：<span id="update-time">2025-12-04</span>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Current Phase -->
+            <div class="card">
+                <div class="card-title">目前階段 (Current Phase)</div>
+                <div class="status-badge status-active">執行模式 (Execution Mode)</div>
+                <p style="margin-top: 1rem; color: var(--text-muted);">
+                    系統運作正常，隨時準備執行指令。
+                </p>
+            </div>
+
+            <!-- Recent Activity Count -->
+            <div class="card">
+                <div class="card-title">近期活動 (Recent Activities)</div>
+                <div class="big-stat">3</div>
+                <p style="color: var(--text-muted);">本週已完成的任務數量</p>
+            </div>
+        </div>
+
+        <div class="grid" style="grid-template-columns: 2fr 1fr;">
+            <!-- Recent Logs -->
+            <div class="card">
+                <div class="card-title">最新動態 (Latest Logs)</div>
+                <div class="list-item">
+                    <span class="list-date">2025-12-04</span>
+                    <div class="list-content">
+                        <strong>系統優化</strong><br>
+                        隱藏系統資料夾、建立儀表板、新增中文指令劇本。
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-date">2025-12-04</span>
+                    <div class="list-content">
+                        <strong>專案拆分</strong><br>
+                        將 DISC 測驗獨立為新專案，並全面中文化目錄結構。
+                    </div>
+                </div>
+                <div class="list-item">
+                    <span class="list-date">2025-12-04</span>
+                    <div class="list-content">
+                        <strong>DISC 網頁發佈</strong><br>
+                        修正影片連結並發佈至 GitHub Pages。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="card">
+                <div class="card-title">快速連結 (Quick Links)</div>
+                <div class="links-grid">
+                    <a href="https://mandy0203-ops.github.io/disc-personality-test/" target="_blank" class="link-btn">
+                        <span class="icon">🎯</span>
+                        <div>
+                            <strong>DISC 測驗網頁</strong><br>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">前往 GitHub Pages</span>
+                        </div>
+                    </a>
+                    <a href="https://github.com/mandy0203-ops/disc-personality-test" target="_blank" class="link-btn">
+                        <span class="icon">📦</span>
+                        <div>
+                            <strong>DISC 原始碼</strong><br>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">GitHub Repository</span>
+                        </div>
+                    </a>
+                    <a href="https://github.com/mandy0203-ops/korea-smart-pay" target="_blank" class="link-btn">
+                        <span class="icon">🇰🇷</span>
+                        <div>
+                            <strong>韓國記帳軟體</strong><br>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">GitHub Repository</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>由 AI 系統設計師自動生成與維護</p>
+        </footer>
+    </div>
+</body>
+
+</html>

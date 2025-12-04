@@ -177,7 +177,8 @@ safety:
 3. **If no triggers fire in Step 3**, stop here.
 
 ### Step 3 — Deterministic Triggers (run only when true)
-- **Execution state changed?** → Update `STATE.md` when the phase shifts, standing next steps differ, or the user requests a refresh. Keep it to month/phase, one-sentence summary referencing the matching `SYSTEM_MEMORY.md` line, and the current next steps.
+### Step 3 — Deterministic Triggers (run only when true)
+- **Execution state changed?** → Update `STATE.md` AND **update `03-輸出/專案儀表板/status.html`**.
 - **Assets moved or added?** → When you add/modify a tool wrapper or prompt file, update in the same work block: `registry.yaml` → `docs/agents/TOOLS.md` → `docs/prompts/INDEX.md` (for prompts) → related playbook entries → user docs in 繁體中文 (as applicable).
 - **Playbook intent changed without new tooling?** → Update `PLAYBOOKS.md` and cite the prompts/tools used.
 - **New troubleshooting knowledge?** → Append to `docs/agents/TROUBLESHOOTING.md` with the fix and escalation guidance.
@@ -185,6 +186,11 @@ safety:
 - **User asked for anything else?** → Honor explicit instructions (e.g., regenerate a digest or status).
 
 **All triggered updates should happen in the same work block as the change so DocSync stays lean and atomic.** If none of the conditions apply, no further documentation updates are required.
+
+## 系統優化規則 (System Optimization Rules)
+1. **隱形系統層**：`01-系統` 資料夾應保持隱藏狀態 (`chflags hidden`)，以免干擾使用者，但 Agent 仍可自由存取。
+2. **視覺化儀表板**：所有重大狀態變更（如完成任務、發佈更新）後，必須同步更新 `03-輸出/專案儀表板/status.html`，確保使用者能透過網頁查看最新進度。
+3. **中文指令劇本**：優先支援 `PLAYBOOKS.md` 中定義的中文快捷指令（如 `#發佈`、`#狀態`），提供直覺的操作體驗。
 
 ## Tool Discovery & Registry Rules
 - **Never invoke unregistered tools.** If a wrapper exists without a registry entry, propose registering before use.
